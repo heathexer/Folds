@@ -4,7 +4,7 @@ void setup() {
   size(800, 800);
   background(255);
   fill(0);
-  numCorners = 500;
+  numCorners = 6;
   radius = 300;
   vertices = new Corner[(int)numCorners];
   for(float i=0; i<vertices.length; i++) vertices[(int)i] = new Corner(i*(360/numCorners));
