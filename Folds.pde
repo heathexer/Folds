@@ -9,7 +9,7 @@ void setup() {
   for(float i=0; i<vertices.length; i++){
     vertices[(int)i] = new Corner(i*(360/numCorners));
     vertices[(int)i].show();
-    System.out.println(i*(360/numCorners));
+    // System.out.println(i*(360/numCorners));
   }
 }
 
