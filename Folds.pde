@@ -9,7 +9,6 @@ void setup() {
   for(float i=0; i<vertices.length; i++){
     vertices[(int)i] = new Corner(i*(360/numCorners));
     vertices[(int)i].show();
-    // System.out.println(i*(360/numCorners));
   }
 }
 
@@ -22,7 +21,6 @@ class Corner {
     this.rot = rot;
   }
   void show() {
-    // System.out.println(this.rot);
     pushMatrix();
     translate(width/2, height/2);
     rotate(radians(this.rot));
