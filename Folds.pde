@@ -22,7 +22,7 @@ class Corner {
     this.rot = rot;
   }
   void show() {
-    System.out.println(this.rot);
+    // System.out.println(this.rot);
     pushMatrix();
     translate(width/2, height/2);
     rotate(radians(this.rot));
