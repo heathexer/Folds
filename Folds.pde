@@ -3,7 +3,6 @@ Corner[] vertices;
 void setup() {
   size(800, 800);
   background(255);
-  strokeWeight(5);
   numCorners = 6;
   radius = 300;
   vertices = new Corner[(int)numCorners];
@@ -27,7 +26,7 @@ class Corner {
     pushMatrix();
     translate(width/2, height/2);
     rotate(radians(this.rot));
-    point(0, radius);
+    ellipse(0, radius, 5, 5);
     popMatrix();
   }
 }
