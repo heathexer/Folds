@@ -7,7 +7,7 @@ void setup() {
   size(800, 800);
   background(255);
   strokeWeight(3);
-  frameRate(120);
+  frameRate(150);
   numCorners = 12;
   radius = 300;
   vertices = new Corner[(int)numCorners];
@@ -23,7 +23,7 @@ void setup() {
 void draw() {
   translate(width/2, height/2);
   rotate(radians(rotation));
-  rotation--;
+  rotation-=.5;
   background(255);
   for(int i=0; i<edges.length; i++) edges[i].show();
   movingLine.move();
@@ -70,14 +70,14 @@ class Edge {
 }
 
 class MovingLine {
-  float angle, angleDif;
+  float angle, angleDif, speed;
   Corner originPoint;
-  int index, speed;
+  int index;
   MovingLine() {
     this.angle = angleMeasure/2;
     this.angleDif = 0;
     this.index = 0;
-    this.speed = 5;
+    this.speed = 2.5;
   }
   void move() {
     originPoint = vertices[index];
