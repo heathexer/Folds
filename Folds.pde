@@ -22,7 +22,7 @@ void setup() {
   angleMeasure = 180*(numCorners-2)/numCorners;
   movingLine = new MovingLine(2.5);
   rotation = 90+(360/numCorners)/2;
-  sidesSlider = new Slider("Sides", 10, 750, 200, 40, 4, 100, 12);
+  sidesSlider = new Slider("Sides", 10, 750, 200, 40, 4, 50, 12);
   speedSlider = new Slider("Speed", 590, 750, 200, 40, 0, 25, 3);
 }
 
