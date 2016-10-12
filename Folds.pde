@@ -4,6 +4,7 @@ Corner[] vertices;
 Edge[] edges;
 MovingLine movingLine;
 Slider sidesSlider, speedSlider;
+boolean firstLoad;
 
 void setup() {
   size(800, 800);
@@ -12,21 +13,16 @@ void setup() {
   frameRate(150);
   textSize(30);
   textAlign(CENTER);
-  numCorners = 12;
-  radius = 300;
-  vertices = new Corner[(int)numCorners];
-  edges = new Edge[(int)numCorners];
-  for(int i=0; i<vertices.length; i++) vertices[i] = new Corner(i*(360/numCorners));
-  for(int i=0; i<edges.length; i++) edges[i] = new Edge(i);
-  edgeLength = dist(vertices[0].x, vertices[0].y, vertices[1].x, vertices[1].y);
-  angleMeasure = 180*(numCorners-2)/numCorners;
-  movingLine = new MovingLine(2.5);
-  rotation = 90+(360/numCorners)/2;
-  sidesSlider = new Slider("Sides", 10, 750, 200, 40, 4, 50, 12);
-  speedSlider = new Slider("Speed", 590, 750, 200, 40, 0, 25, 3);
+  sidesSlider = new Slider("Sides", 10, 750, 200, 40, 4, 50, 30);
+  speedSlider = new Slider("Speed", 590, 750, 200, 40, 0, 25, 60);
+  firstLoad = true;
 }
 
 void draw() {
+  if(firstLoad) {
+    reset();
+    firstLoad = false;
+  }
   pushMatrix();
   translate(width/2, height/2);
   rotate(radians(rotation));
@@ -74,11 +70,7 @@ class Edge {
     }
   }
   void toggle() {
-    if(showing) {
-      showing = false;
-    } else {
-      showing = true;
-    }
+    this.showing = !this.showing;
   }
 }
 
@@ -159,9 +151,10 @@ class Slider {
     return map(value, 0, (float)(this.x+this.w), this.min, this.max);
   }
 }
+
 void reset() {
+  radius = 300;
   numCorners = (int)(sidesSlider.getValue());
-  movingLine = new MovingLine((float)(speedSlider.getValue()));
   vertices = new Corner[numCorners];
   edges = new Edge[numCorners];
   for(int i=0; i<vertices.length; i++) vertices[i] = new Corner(i*(360/(float)numCorners));
@@ -169,4 +162,5 @@ void reset() {
   edgeLength = dist(vertices[0].x, vertices[0].y, vertices[1].x, vertices[1].y);
   angleMeasure = 180*(numCorners-2)/numCorners;
   rotation = 90+(360/numCorners)/2;
+  movingLine = new MovingLine((float)(speedSlider.getValue()));
 }
